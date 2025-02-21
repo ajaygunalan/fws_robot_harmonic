@@ -150,4 +150,3 @@ if __name__ == '__main__':
     
     rclpy.shutdown()
     executor_thread.join()
-
