@@ -2,6 +2,14 @@
 
 
 ```
+source /opt/ros/jazzy/setup.bash
+```
+
+```
+source install/setup.bash
+```
+
+```
 ros2 launch fws_robot_sim fws_robot_spawn.launch.py
 
 ```
