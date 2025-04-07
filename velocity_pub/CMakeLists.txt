@@ -34,6 +34,7 @@ install(
 install(
     PROGRAMS
     scripts/robot_control.py
+    scripts/keyboard_to_joy.py
     launch/four_ws_control.launch.py
     DESTINATION lib/${PROJECT_NAME}
   )
