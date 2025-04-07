@@ -14,7 +14,7 @@ source /opt/ros/jazzy/setup.bash
 source install/setup.bash
 ```
 
-Then, this:
+clone this repo inside your workspace and build it by `colcon build`. Then, this:
 ```
 ros2 launch fws_robot_sim fws_robot_spawn.launch.py
 ```
