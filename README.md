@@ -22,3 +22,8 @@ In new terminal:
 ```
 ros2 launch velocity_pub four_ws_control.launch.py
 ```
+
+
+## To Do
+1. To control the robot via keyboard
+2. Then refactor the code.
