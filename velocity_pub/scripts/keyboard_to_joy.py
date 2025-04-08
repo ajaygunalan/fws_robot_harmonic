@@ -108,8 +108,8 @@ def main(args=None):
     print_instructions()
     show_status(current_mode, linear_x, linear_y, angular_z)
     
-    # Button state
-    buttons = [0] * 11
+    # Sticky mode buttons that persist between messages
+    sticky_mode_buttons = [0] * 11
     
     try:
         last_publish_time = time.time()
@@ -140,21 +140,21 @@ def main(args=None):
                     linear_x = 0.0
                     linear_y = 0.0
                     angular_z = 0.0
-                # Mode controls
+                # Mode controls - using sticky button state
                 elif key == '1':
-                    buttons = [0] * 11
-                    buttons[0] = 1  # A button
+                    sticky_mode_buttons = [0] * 11
+                    sticky_mode_buttons[0] = 1  # A button - In-phase
                     current_mode = "In-phase"
                 elif key == '2':
-                    buttons = [0] * 11
-                    buttons[4] = 1  # LB button
+                    sticky_mode_buttons = [0] * 11
+                    sticky_mode_buttons[4] = 1  # LB button - Opposite-phase
                     current_mode = "Opposite-phase"
                 elif key == '3':
-                    buttons = [0] * 11
-                    buttons[5] = 1  # RB button
+                    sticky_mode_buttons = [0] * 11
+                    sticky_mode_buttons[5] = 1  # RB button - Pivot turn
                     current_mode = "Pivot turn"
                 elif key == '0':
-                    buttons = [0] * 11
+                    sticky_mode_buttons = [0] * 11
                     current_mode = "None"
                 # Exit on ESC or Ctrl+C
                 elif key in ('\x03', '\x1b'):
@@ -166,9 +166,8 @@ def main(args=None):
             # Publish at regular intervals
             current_time = time.time()
             if current_time - last_publish_time >= publish_rate:
-                node.update_joy(linear_x, linear_y, angular_z, buttons)
-                # Reset momentary button presses
-
+                # Use sticky_mode_buttons for persistent mode selection
+                node.update_joy(linear_x, linear_y, angular_z, sticky_mode_buttons)
                 last_publish_time = current_time
                 
             # Small sleep to prevent CPU hogging
