@@ -129,8 +129,8 @@ class Joy_subscriber(Node):
         else:
             mode_selection = 4
 
-        vel_msg.linear.x = data.axes[1]*7.5
-        vel_msg.linear.y = data.axes[0]*7.5
+        vel_msg.linear.x = data.axes[1]*75
+        vel_msg.linear.y = data.axes[0]*75
         vel_msg.angular.z = data.axes[3]*10
   
 
